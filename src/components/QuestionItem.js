@@ -9,6 +9,12 @@ function QuestionItem({ question }) {
     </option>
   ));
 
+  const handleDelete = async () => {
+    await fetch(`http://localhost:4000/questions/${id}`, {
+      method: "DELETE",
+    });
+  };
+
   return (
     <li>
       <h4>Question {id}</h4>
@@ -17,7 +23,7 @@ function QuestionItem({ question }) {
         Correct Answer:
         <select defaultValue={correctIndex}>{options}</select>
       </label>
-      <button>Delete Question</button>
+      <button onClick={handleDelete}>Delete Question</button>
     </li>
   );
 }
